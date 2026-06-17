@@ -1355,6 +1355,67 @@
         padding: 6px 14px;
       }
     }
+    .floating-album-btn {
+  position: fixed;
+  bottom: 25px;
+  left: 25px;
+  z-index: 9999; /* Поверх всего */
+  
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  
+  background: linear-gradient(135deg, #b890c8, #a070b0);
+  border: 2px solid rgba(180, 120, 160, 0.6);
+  border-radius: 35px;
+  padding: 12px 24px;
+  text-decoration: none;
+  
+  box-shadow: 
+    0 8px 30px rgba(120, 80, 140, 0.3),
+    0 0 20px rgba(180, 120, 160, 0.2);
+  
+  transition: all 0.3s ease;
+  cursor: pointer;
+  white-space: nowrap;
+  
+  animation: floatButton 3s ease-in-out infinite;
+}
+
+.floating-album-btn:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 
+    0 12px 40px rgba(120, 80, 140, 0.4),
+    0 0 30px rgba(180, 120, 160, 0.35);
+  background: linear-gradient(135deg, #a070b0, #8b5a9e);
+}
+
+.floating-album-btn .icon {
+  font-size: 20px;
+  display: inline-block;
+}
+
+/* Анимация "парения" кнопки */
+@keyframes floatButton {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* Скрываем на очень узких экранах, чтобы не мешала */
+@media (max-width: 480px) {
+  .floating-album-btn {
+    bottom: 15px;
+    left: 15px;
+    padding: 10px 18px;
+    font-size: 13px;
+  }
+  .floating-album-btn .icon { font-size: 18px; }
+}
   </style>
 </head>
 
@@ -1543,6 +1604,11 @@
   <div class="dzyn-popup" id="dzynPopup">✨ дзынь! ✨</div>
   <div class="flying-photos-container" id="flyingPhotos"></div>
 
+  <a href="PhotoAlbums.html" class="floating-album-btn" target="_blank">
+    <span class="icon">📸</span>
+    <span>Фотоальбом</span>
+  </a>
+  
   <script>
     // ===== FLOATING PARTICLES =====
     (function () {
